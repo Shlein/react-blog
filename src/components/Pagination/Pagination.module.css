@@ -1,0 +1,22 @@
+.pages {
+    margin: 30px 0;
+}
+
+.page {
+    padding: 15px;
+    background-color: lightgreen;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.page:hover {
+    background-color: #9dce9d;
+}
+
+.page:not(:last-of-type) {
+    margin-right: 15px;
+}
+
+.pageCurrent {
+    background-color: green;
+}

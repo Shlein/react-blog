@@ -1,0 +1,28 @@
+.header {
+    position: static;
+    width: 100%;
+    padding: 30px 15px;
+    background-color: #b5d9b5;
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: green;
+}
+
+.activeLink {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: red;
+    margin-right: 20px;
+}
+
+.link:not(:last-of-type) {
+    margin-right: 20px;
+}

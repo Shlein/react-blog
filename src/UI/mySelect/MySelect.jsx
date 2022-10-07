@@ -4,8 +4,10 @@ const MySelect = (props) => {
 	return (
 		<select
 			{...props}
+			onChange={e => props.onChange(e.target.value)}
 		>
-			{props.options.map((option) => {
+			<option disabled>{props.defaultValue}</option>
+			{props.options.map(option => {
 				return (
 					<option
 						key={option.value}

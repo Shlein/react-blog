@@ -7,7 +7,66 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  font-size: 16px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid aquamarine;
+  margin-bottom: 15px;
+}
+
+.post:last-child {
+  margin-bottom: 0;
+}
+
+.post__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.post__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.post__body {
+
+}
+
+.post__btns {
+  display: flex;
+  padding-left: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.post__btns button:not(:last-of-type) {
+  margin-right: 15px;
+}
+
+
+.post-enter {
+  opacity: 0;
+}
+.post-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.post-exit {
+  opacity: 1;
+}
+.post-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+

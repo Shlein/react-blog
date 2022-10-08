@@ -1,11 +1,24 @@
+/*.container {*/
+/*    padding: 0 15px;*/
+/*}*/
+
 .header {
-    position: static;
+    box-sizing: border-box;
+    /*position: fixed;*/
+    height: 10vh;
     width: 100%;
-    padding: 30px 15px;
+    padding: 10px 15px;
     background-color: #b5d9b5;
     border-bottom: 2px solid black;
     margin-bottom: 30px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
 }
 
 .link {

@@ -52,7 +52,7 @@ function PostsPage() {
 	const addPost = (e) => {
 		e.preventDefault();
 		const newPost = {
-			'id': Date.now(),
+			'id': posts.length + 1,
 			'title': post.title,
 			'body': post.body,
 		};

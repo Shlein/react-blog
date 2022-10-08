@@ -1,4 +1,5 @@
-import {useState, useMemo} from "react";
+import {useState, useMemo, useContext} from "react";
+import {AuthContext} from "../hoc/AuthProvider";
 
 const useFetching = (callback) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -43,4 +44,8 @@ const usePagination = (pagesCount) => {
 	}, [pagesCount])
 }
 
-export {useFetching, useSortedPosts, useSortedAndSearchedPosts, usePagination}
+const useAuth = () => {
+	return useContext(AuthContext)
+}
+
+export {useFetching, useSortedPosts, useSortedAndSearchedPosts, usePagination, useAuth}

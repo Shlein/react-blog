@@ -1,8 +1,8 @@
-import HomePage from "../pages/HomePage/HomePage";
-import AboutPage from "../pages/About/AboutPage";
-import PostsPage from "../pages/Posts/PostsPage";
-import PostPage from "../pages/Post/PostPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+// import HomePage from "../pages/HomePage/HomePage";
+// import AboutPage from "../pages/About/AboutPage";
+// import PostsPage from "../pages/Posts/PostsPage";
+// import PostPage from "../pages/Post/PostPage";
+// import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 
 // export const routes = [

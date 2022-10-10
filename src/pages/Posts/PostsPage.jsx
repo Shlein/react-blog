@@ -14,11 +14,7 @@ import Pagination from "../../components/Pagination/Pagination";
 
 function PostsPage() {
 
-	const [posts, setPosts] = useState([
-		// {id: 1, title: 'JS', body: 'Nice'},
-		// {id: 2, title: 'Python', body: 'Norm'},
-		// {id: 3, title: 'Java', body: 'Kal'},
-	])
+	const [posts, setPosts] = useState([])
 	const [isModalVisible, setModalVisible] = useState(false);
 	const [post, setPost] = useState({title: '', body: ''});
 	const [filter, setFilter] = useState({sort: '', search: ''});

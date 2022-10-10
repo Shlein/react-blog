@@ -4,7 +4,6 @@ import {useAuth} from "../hooks";
 export const AuthContext = createContext(null)
 
 export const AuthProvider = ({children}) => {
-	const auth = useAuth()
 	const [user, setUser] = useState(null)
 
 	const signIn = (userName, callback) => {

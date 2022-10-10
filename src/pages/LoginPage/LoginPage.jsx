@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import MyInput from "../../UI/MyInput/MyInput";
 import MyButton from "../../UI/MyButton/MyButton";
 import styles from './LoginPage.module.css'
-import {Navigate, useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks";
 
 const LoginPage = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const {signIn, signOut} = useAuth();
+	const {signIn} = useAuth();
 
 	const fromPage = location.state?.from?.pathname || '/home';
 

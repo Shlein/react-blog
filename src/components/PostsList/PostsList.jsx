@@ -3,8 +3,11 @@ import PostItem from "../PostItem/PostItem";
 import {v4 as uuid} from 'uuid'
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import styles from './PostList.module.css'
+import {useSelector} from "react-redux";
 
-const PostsList = ({posts, removePost}) => {
+const PostsList = () => {
+	const {posts} = useSelector(state => state.posts)
+
 	if (posts.length === 0) {
 		return (
 			<h2>Посты не найдены</h2>
@@ -26,7 +29,7 @@ const PostsList = ({posts, removePost}) => {
 							id={post.id}
 							title={post.title}
 							body={post.body}
-							removePost={removePost}
+							// removePost={removePost}
 						/>
 					// </CSSTransition>
 					)}

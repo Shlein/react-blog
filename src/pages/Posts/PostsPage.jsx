@@ -12,13 +12,12 @@ import Loader from "../../UI/Loader/Loader";
 import PostsList from "../../components/PostsList/PostsList";
 import Pagination from "../../components/Pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
-import {addAsyncPost, fetchAllPosts} from "../../store/PostSlice";
+import {addAsyncPost, fetchAllPosts, removeAsyncPost} from "../../store/PostSlice";
 
 function PostsPage() {
 
 	const dispatch = useDispatch();
 	const {posts, status, error} = useSelector(state => state.posts);
-	// const [posts, setPosts] = useState([])
 	const [isModalVisible, setModalVisible] = useState(false);
 	const [post, setPost] = useState({title: '', body: ''});
 	const [filter, setFilter] = useState({sort: '', search: ''});
@@ -41,14 +40,6 @@ function PostsPage() {
 
 	const modalInputRef = useRef();
 
-	// useEffect(() => {
-	// 	fetchPosts();
-	// }, [queryParams.page])
-
-	const changePage = (page) => {
-		setQueryParams({...queryParams, page: page})
-	}
-
 	function handleModalButton() {
 		setModalVisible(true);
 	}
@@ -56,19 +47,8 @@ function PostsPage() {
 	const addPost = (e) => {
 		e.preventDefault();
 		dispatch(addAsyncPost({title: post.title, body: post.body}))
-
-		// const newPost = {
-		// 	'id': posts.length + 1,
-		// 	'title': post.title,
-		// 	'body': post.body,
-		// };
-		// // setPosts([...posts, newPost]);
 		setPost({title: '', body: ''});
 		setModalVisible(false);
-	}
-
-	const removePost = (postId) => {
-		// setPosts([...posts].filter((post) => post.id !== postId))
 	}
 
 	return (
@@ -107,25 +87,7 @@ function PostsPage() {
 
 			<PostFilter filter={filter} setFilter={setFilter}/>
 
-			<PostsList
-				posts={posts}
-				removePost={removePost}
-			/>
-
-			{/*{postError && <h1>Error! {postError}</h1>}*/}
-
-			{/*{*/}
-			{/*	isPostsLoading*/}
-			{/*		?*/}
-			{/*		<div style={{marginTop: 20, display: 'flex', justifyContent: 'center'}}>*/}
-			{/*			<Loader/>*/}
-			{/*		</div>*/}
-			{/*		:*/}
-			{/*		<PostsList*/}
-			{/*			posts={posts}*/}
-			{/*			removePost={removePost}*/}
-			{/*		/>*/}
-			{/*}*/}
+			<PostsList />
 
 			{status === 'loading'
 				?
@@ -137,7 +99,7 @@ function PostsPage() {
 
 			{error ? <h2>{error.message}</h2> : null}
 
-			<Pagination page={queryParams.page} changePage={changePage} pageCount={queryParams.pagesCount}/>
+			<Pagination/>
 		</div>
 	)
 }

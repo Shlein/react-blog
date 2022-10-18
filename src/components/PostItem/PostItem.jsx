@@ -1,10 +1,17 @@
 import React from 'react';
 import MyButton from "../../UI/MyButton/MyButton";
 import {useNavigate} from 'react-router-dom'
+import {removeAsyncPost, removePost} from "../../store/PostSlice";
+import {useDispatch} from "react-redux";
 
-const PostItem = ({title, body, removePost, id}) => {
+const PostItem = ({title, body, id}) => {
 	const navigate = useNavigate();
 	const goPost = () => navigate(`/posts/${id}`);
+	const dispatch = useDispatch();
+
+	const deletePost = (postId) => {
+		dispatch(() => removeAsyncPost(postId))
+	}
 
 	return (
 		<div className='post'>
@@ -15,7 +22,7 @@ const PostItem = ({title, body, removePost, id}) => {
 			<div className='post__btns'>
 				{/*bad approach*/}
 				<MyButton onClick={goPost}>Open</MyButton>
-				<MyButton onClick={() => removePost(id)}>Delete</MyButton>
+				<MyButton onClick={() => dispatch(removeAsyncPost(id))}>Delete</MyButton>
 			</div>
 		</div>
 	);

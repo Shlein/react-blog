@@ -1,4 +1,3 @@
-import {getPagesCount} from "../utils/pages";
 
 const {createSlice, createAsyncThunk} = require("@reduxjs/toolkit");
 
@@ -6,18 +5,15 @@ export const fetchAllPosts = createAsyncThunk(
 	'posts/fetchPosts',
 	async function({limit = 10, page = 1}, {dispatch, rejectWithValue}) {
 		try {
+
 			const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`);
 
 			if (!response.ok) {
 				throw new Error('Server Error!');
 			}
 
-			// const data = await response.json();
-			// const totalPages = response.headers['x-total-count'];
-			// console.log(totalPages)
-			// dispatch(setTotalPages({totalPages}))
-			//
-			// getState(state => state.totalPages = getPagesCount(totalPages))
+			dispatch(setPageLimit({limit}));
+			dispatch(setCurrentPage({page}));
 
 			return await response.json()
 
@@ -92,9 +88,10 @@ const postSlice = createSlice({
 	initialState: {
 		posts: [],
 		status: null,
+		pageLimit: null,
 		error: null,
 		totalPages: null,
-		pageNumber: 1,
+		currentPage: 1,
 	},
 	reducers: {
 		addPost(state, action) {
@@ -103,12 +100,12 @@ const postSlice = createSlice({
 		removePost(state, action) {
 			state.posts = state.posts.filter(post => post.id !== action.payload.id)
 		},
-		changePage(state, action) {
-			state.pageNumber = action.payload.page
+		setCurrentPage(state, action) {
+			state.currentPage = action.payload.page
 		},
-		setTotalPages(state, action) {
-			state.totalPages = action.payload.pagesAmount
-		},
+		setPageLimit(state, action) {
+			state.pageLimit = action.payload.limit
+		}
 	},
 	extraReducers: {
 		[fetchAllPosts.pending]: (state) => {
@@ -126,4 +123,4 @@ const postSlice = createSlice({
 
 export default postSlice.reducer;
 
-export const {addPost, removePost, changePage, setTotalPages} = postSlice.actions
+export const {addPost, removePost, setPageLimit, setCurrentPage} = postSlice.actions

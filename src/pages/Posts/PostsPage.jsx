@@ -21,7 +21,7 @@ function PostsPage() {
 	const [isModalVisible, setModalVisible] = useState(false);
 	const [post, setPost] = useState({title: '', body: ''});
 	const [filter, setFilter] = useState({sort: '', search: ''});
-	const [queryParams, setQueryParams] = useState({page: 1, limit: 10, pagesCount: 0})
+	// const [queryParams, setQueryParams] = useState({page: 1, limit: 10, pagesCount: 0})
 	// const sortedPosts = useSortedPosts(posts, setFilter, filter.sort);
 
 	// const sortedAndSearchedPosts = useSortedAndSearchedPosts(filter.search, sortedPosts);
@@ -35,7 +35,7 @@ function PostsPage() {
 	// })
 
 	useEffect(() => {
-		dispatch(fetchAllPosts({limit: queryParams.limit, page: queryParams.page}))
+		dispatch(fetchAllPosts({}))
 	}, [dispatch])
 
 	const modalInputRef = useRef();
@@ -99,7 +99,7 @@ function PostsPage() {
 
 			{error ? <h2>{error.message}</h2> : null}
 
-			<Pagination/>
+			<Pagination />
 		</div>
 	)
 }

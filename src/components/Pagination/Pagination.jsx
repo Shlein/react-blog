@@ -4,8 +4,7 @@ import styles from './Pagination.module.css'
 import {usePagination} from "../../hooks";
 import {useDispatch, useSelector} from "react-redux";
 import {getPagesCount} from "../../utils/pages";
-import {useParams} from "react-router-dom";
-import {fetchAllPosts, setCurrentPage} from "../../store/PostSlice";
+import {fetchAllPosts} from "../../store/PostSlice";
 
 const Pagination = () => {
 	const {currentPage, pageLimit, posts} = useSelector(state => state.posts);
@@ -13,8 +12,6 @@ const Pagination = () => {
 	const dispatch = useDispatch();
 	const pagesArray = usePagination(getPagesCount(postsAmount, pageLimit && true));
 	const changePage = (page) => dispatch(fetchAllPosts({limit: 10, page}));
-
-	// console.log(currentPage, pageLimit, postsAmount)
 
 	return (
 		<div className={styles.pages}>
